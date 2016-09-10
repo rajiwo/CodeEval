@@ -1,0 +1,34 @@
+﻿using System;
+using System.Text;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+
+        using (StreamReader reader = File.OpenText(args[0]))
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                if (null == line)
+                    continue;
+                MyLogic(line);
+
+            }
+    }
+
+    static void MyLogic(string line)
+    {
+
+        //ここから下に、自分で考えたアルゴリズムを書く。
+        char lastchar = '\0';
+        foreach(char ch in line)
+        {
+            if (ch == lastchar) continue;
+            lastchar = ch;
+            Console.Write(ch);
+        }
+        Console.WriteLine();
+    }
+}
